@@ -46,6 +46,11 @@ namespace internal {
             : tensor(shape, fplus::make_shared_ref<float_vec>(shape.volume(), value))
         {
         }
+        template <typename It>
+        tensor(const tensor_shape& shape, It first, It last)
+            : tensor(shape, fplus::make_shared_ref<float_vec>(first, last))
+        {
+        }
         float_type get(const tensor_pos& pos) const
         {
             return (*values_)[idx(pos)];
